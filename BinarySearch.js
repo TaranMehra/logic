@@ -9,7 +9,8 @@ function BinarySearch(arr, i, j, x){
     // else{
 
         console.log(`i : ${i}, j : ${j}`)
-        const mid = Math.floor((i + (j-i))/2);
+        // const mid = Math.floor((i + (j-i))/2);
+        const mid = i + Math.floor((j - i) / 2);
         console.log(`mid : ${mid} , arr[mid] : ${arr[mid]}`);
         
         if(arr[mid]== x){
