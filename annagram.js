@@ -5,47 +5,22 @@ class Solution {
      * @return {boolean}
      */
     isAnagram(s, t) {
-        const strMap = new Map();
-
-        //storing the keys and accmulating value;
-        for(let keys of s){
-            if(strMap.has(keys)){
-                console.log("when key is :", keys)
-                let value = strMap.get(keys);
-                strMap.set(keys, value + 1);
+        let arr = [...s]; //typecasting
+        for(let i=0; i < s.length; i++){
+            if(arr.includes(`${t[i]}`)){
+                let index = arr.indexOf(`${t[i]}`);
+                arr.splice(index, 1);
             }
             else{
-                strMap.set(keys, 1);
-            }
-        }
-        
-        for(let values of t){
-            if(strMap.has(values)){
-                let value = strMap.get(values);
-                if(value === 0){
-                    console.log("value present only few times");
-                    return false;
-                }
-                value = value - 1;
-                strMap.set(values, values);
-            }
-            else {
-                console.log("value not present");
                 return false;
-                // strMap.set(values, null);
-                // console.log("S string don't have : ", values);
-                
-            } 
-            // console.log(strMap.has(values))           
-            return true;
+            }
         }
-
-        console.log(strMap);
-
+        console.log("array at the end ", arr.length);
+        return arr.length === 0 ? true : false;
     }
 }
 const Sol = new Solution();
-const result = Sol.isAnagram('air','riaa');
+const result = Sol.isAnagram('rcbgcc','crgbc');
 console.log(result)
 
 
