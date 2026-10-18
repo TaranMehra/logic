@@ -23,28 +23,30 @@ class Solution {
    * @param {string} str
    * @returns {string[]}
    */
-  
 
-	decode(str) {
-  const parts = str.split("w");
-  const res = [];
-	// console.log(parts)
+  decode(str) {
+    const parts = str.split("w");
+    const res = [];
+    console.log("Full w parts are : ", parts);
 
-  for (let i = 1; i < parts.length; i += 2) {
-    let word = "";
-    for (const c of parts[i].split("c")) {
-			
-      if (c.length > 0) word += String.fromCharCode(Number(c));
+    for (let i = 1; i < parts.length; i += 2) {
+      //cause 'w' -> '' so '0' '1' '2' '3' -> where 1,3 odd contains the data
+
+      let word = "";
+      for (const c of parts[i].split("c")) {
+        // console.log("c",c);
+
+        if (c.length > 0) word += String.fromCharCode(Number(c));
+      }
+      res.push(word);
     }
-    res.push(word);
+    return res;
   }
-  return res;
-}
 }
 
 const Sol = new Solution();
-let encodedString = Sol.encode(["Hello","World"]);
-// let encodedString = Sol.encode(["Hi", ""]);
+// let encodedString = Sol.encode(["Hello","World"]);
+let encodedString = Sol.encode(["Hi", ""]);
 // let encodedString = Sol.encode(["", ""]);
 
 console.log("encodedString :", encodedString);
@@ -52,28 +54,28 @@ let decodeedString = Sol.decode(encodedString);
 console.log(" decodedString :", decodeedString);
 
 // decode(str) {
-  //   let arr = [];
+//   let arr = [];
 
-  //   // let word = str.split("w");
-	// 	let word = str.slice(1, -1).split("w");
-  //   for (let one of word) {
-  //     let fullword = "";
-  //     if (one.length > 0) {
-  //       let chars = one.split("c");
-  //       if (chars.length) {
-  //         for (let c of chars) {
-  //           // console.log("chars : ", String.fromCharCode(c));
+//   // let word = str.split("w");
+// 	let word = str.slice(1, -1).split("w");
+//   for (let one of word) {
+//     let fullword = "";
+//     if (one.length > 0) {
+//       let chars = one.split("c");
+//       if (chars.length) {
+//         for (let c of chars) {
+//           // console.log("chars : ", String.fromCharCode(c));
 
-  //           if (c.length > 0) {
-  //             fullword += String.fromCharCode(c);
-  //           }
-  //         }
-  //       }
-  //     }
-	// 		arr.push(fullword);
-  //   }
-  //   return arr;
-	// }
+//           if (c.length > 0) {
+//             fullword += String.fromCharCode(c);
+//           }
+//         }
+//       }
+//     }
+// 		arr.push(fullword);
+//   }
+//   return arr;
+// }
 
 // class Solution {
 //     /**
